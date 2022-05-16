@@ -1,0 +1,1 @@
+C:\Users\gupta\OneDrive\Desktop\scuola\quarta\informatica\c#\uwp-2\NorthwindUWP\gestionaleDB.csproj;x86

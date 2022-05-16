@@ -6,6 +6,7 @@ using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.UI.Popups;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -50,7 +51,7 @@ namespace gestionaleDB
         {
             DB_Connect();
             Customers = new List<Customer>();
-            string sql = "select " + "CustomerID, CompanyName, ContactName, ContactTitle, Country from customers";
+            string sql = "select CustomerID, CompanyName, ContactName, ContactTitle, Country from customers";
             MySqlCommand mysqlcom = new MySqlCommand(sql, mysqlcon);
             using (MySqlDataReader mysqlread = mysqlcom.ExecuteReader())
             {
@@ -58,7 +59,7 @@ namespace gestionaleDB
                 {
                     Customer customer = new Customer()
                     {
-                        CustomerID = Convert.ToInt32(mysqlread.GetString(0)),
+                        CustomerID = mysqlread.GetString(0),
                         CompanyName = mysqlread.GetString(1),
                         ContactName = mysqlread.GetString(2),
                         ContactTitle = mysqlread.GetString(3),
@@ -72,12 +73,64 @@ namespace gestionaleDB
         {
             if (!reader.IsDBNull(colIndex)) return reader.GetString(colIndex);
             return string.Empty;
-            
+
         }
 
-        private void DeleteBtnClicked(object sender, RoutedEventArgs e)
+        private void InitData()
         {
+            GetCustomers();
+            dataGridCustomers.ItemsSource = Customers;
+        }
 
+        private async void DeleteBtnClicked(object sender, RoutedEventArgs e)
+        {
+            if (dataGridCustomers.SelectedItems == null) return;
+            Customer customerSelected = dataGridCustomers.SelectedItem as Customer;
+            if (customerSelected == null) return;
+            string sql = $"Delete from Customers where CustomerID = {customerSelected.CustomerID}";
+            MySqlCommand cmd = new MySqlCommand(sql, mysqlcon);
+            cmd.ExecuteNonQuery();
+            await new MessageDialog("Deleted", "").ShowAsync();
+            InitData();
+        }
+
+        private void rootPivot_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (rootPivot.SelectedIndex == 0)
+            {
+                InitData();
+            }
+        }
+
+        private async void Save_Click(object sender, RoutedEventArgs e)
+        {
+            var customerID = CustomerID.Text.Trim();
+            var companyName = CompanyName.Text.Trim();
+            var contactName = ContactName.Text.Trim();
+            var contactTitle = ContactTitle.Text.Trim();
+            var country = Country.Text.Trim();
+            var titleMessage = "Data not valid";
+
+            string msg = string.IsNullOrWhiteSpace(customerID) ? "Customer ID" :
+                string.IsNullOrWhiteSpace(companyName) ? "Company Name" :
+                string.IsNullOrWhiteSpace(contactName) ? "Contact Name" :
+                string.IsNullOrWhiteSpace(contactTitle) ? "Contact Title" :
+                string.IsNullOrWhiteSpace(country) ? "Country" : "";
+
+            if (!string.IsNullOrWhiteSpace(msg))
+            {
+                await new MessageDialog(titleMessage, $"{msg} is empty").ShowAsync();
+                return;
+            }
+        }
+
+        private void Cancel_Click(object sender, RoutedEventArgs e)
+        {
+            CustomerID.Text = "";
+            CompanyName.Text = "";
+            ContactName.Text = "";
+            ContactTitle.Text = "";
+            Country.Text = "";
         }
     }
 }

@@ -9991,7 +9991,7 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\6190006\\.nuget\\packages\\": {},
+    "C:\\Users\\gupta\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {},
     "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\": {},
     "C:\\Program Files (x86)\\Microsoft SDKs\\UWPNuGetPackages\\": {}
@@ -9999,11 +9999,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\6190006\\Desktop\\uwp\\gestionaleDB\\gestionaleDB.csproj",
+      "projectUniqueName": "C:\\Users\\gupta\\OneDrive\\Desktop\\scuola\\quarta\\informatica\\c#\\uwp-2\\NorthwindUWP\\gestionaleDB.csproj",
       "projectName": "gestionaleDB",
-      "projectPath": "C:\\Users\\6190006\\Desktop\\uwp\\gestionaleDB\\gestionaleDB.csproj",
-      "packagesPath": "C:\\Users\\6190006\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\6190006\\Desktop\\uwp\\gestionaleDB\\obj\\",
+      "projectPath": "C:\\Users\\gupta\\OneDrive\\Desktop\\scuola\\quarta\\informatica\\c#\\uwp-2\\NorthwindUWP\\gestionaleDB.csproj",
+      "packagesPath": "C:\\Users\\gupta\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\gupta\\OneDrive\\Desktop\\scuola\\quarta\\informatica\\c#\\uwp-2\\NorthwindUWP\\obj\\",
       "projectStyle": "PackageReference",
       "skipContentFileWrite": true,
       "fallbackFolders": [
@@ -10012,7 +10012,7 @@
         "C:\\Program Files (x86)\\Microsoft SDKs\\UWPNuGetPackages\\"
       ],
       "configFilePaths": [
-        "C:\\Users\\6190006\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\gupta\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"

@@ -10,7 +10,7 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <Grid>
-        <Pivot x:Name="rootPivot" Title="UWP e MySql">
+        <Pivot x:Name="rootPivot" Title="UWP e MySql" SelectionChanged="rootPivot_SelectionChanged" >
             <PivotItem Header="Customers">
                 <StackPanel>
                     <StackPanel Orientation="Horizontal">
@@ -25,7 +25,19 @@
                     />
                 </StackPanel>
             </PivotItem>
-            <PivotItem Header="New Customer"></PivotItem>
+            <PivotItem Header="New Customer">
+                <StackPanel>
+                    <TextBox x:Name="CustomerID" Header="Customer ID" Margin="0,24,0,0" MaxLength="32" Width="400" HorizontalAlignment="Left"/>
+                    <TextBox x:Name="CompanyName" Header="Company Name" Margin="0,24,0,0" MaxLength="32" Width="400" HorizontalAlignment="Left"/>
+                    <TextBox x:Name="ContactName" Header="Contact Name" Margin="0,24,0,0" MaxLength="32" Width="400" HorizontalAlignment="Left"/>
+                    <TextBox x:Name="ContactTitle" Header="Contact Title" Margin="0,24,0,0" MaxLength="32" Width="400" HorizontalAlignment="Left"/>
+                    <TextBox x:Name="Country" Header="Country" Margin="0,24,0,0" MaxLength="32" Width="400" HorizontalAlignment="Left"/>
+                    <StackPanel Orientation="Horizontal">
+                        <Button x:Name="Save" Content="Save" Margin="0,24" Click="Save_Click"/>
+                        <Button x:Name="Cancel" Content="Cancel" Margin="0,24" Click="Cancel_Click"/>
+                    </StackPanel>
+                </StackPanel>
+            </PivotItem>
         </Pivot>
     </Grid>
 </Page>
